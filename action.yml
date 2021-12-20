@@ -4,12 +4,13 @@ branding:
   icon: user-check
   color: gray-dark
 inputs:
-  tag:
-    description: 'Update DB for Repo in Releases'
+  name:
+    description: 'REPO の呼び方はこちらへ'
     required: true
-    default: 'x86_64'
+    default: 'zhaose-repo'
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
+    - ${{ GITHUB_REPOSITORY }}
     - ${{ inputs.repo-name }}
