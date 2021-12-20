@@ -8,6 +8,6 @@ for i in ${urls[*]}; do
 pkg=$(echo $i|awk -F '/' '{print$7}')
 echo Downloading $pkg
 wget -q https://github.com/$i -P tmp/
-repo-add -p ${2}.db.tar.gz ./tmp/$pkg
+repo-add -p ${2}.db.tar.gz ./tmp/*.pkg.tar.zst
 done
 
