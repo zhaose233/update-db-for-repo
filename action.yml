@@ -8,9 +8,13 @@ inputs:
     description: 'REPO の呼び方はこちらへ'
     required: true
     default: 'zhaose-repo'
+  url:
+    description: 'REPO の URL はこちらへ'
+    required: true
+    default: 'weiliang1503/zhaose-repo'
 runs:
   using: 'docker'
   image: 'Dockerfile'
   args:
-    - ${{ github.repository }}
-    - ${{ inputs.repo-name }}
+    - ${{ input.url }}
+    - ${{ inputs.name }}
