@@ -11,3 +11,4 @@ wget -q https://github.com/$i -P tmp/
 repo-add -p ${2}.db.tar.gz ./tmp/*.pkg.tar.zst
 done
 
+find .
