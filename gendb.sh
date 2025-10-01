@@ -1,8 +1,12 @@
 #!/bin/bash
 
+pacman -S --noconfirm jq
+
 mkdir tmp -p
 
-urls=$(curl https://github.com/$1/releases/tag/x86_64 -s|grep "/$1/releases/download/x86_64/"|awk -F '"|"' '{print$2}')
+API_URL="https://api.github.com/repos/$1/releases/tags/x86_64"
+
+urls=$(curl -sL "${API_URL}" | jq -r '.assets[].browser_download_url')
 
 for i in ${urls[*]}; do 
 pkg=$(echo $i|awk -F '/' '{print$7}')
